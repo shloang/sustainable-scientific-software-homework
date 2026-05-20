@@ -1,0 +1,14 @@
+name: sss
+on: [push]
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    container: <username>/sss:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          python3 -m pytest
