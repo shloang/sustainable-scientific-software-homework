@@ -3,7 +3,7 @@ on: [push]
 jobs:
   tests:
     runs-on: ubuntu-24.04
-    container: <username>/sss:latest
+    container: shloang/sss:latest
 
     steps:
       - name: Checkout code
