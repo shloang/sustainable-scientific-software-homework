@@ -138,6 +138,32 @@ py.test
 git add .
 git commit -m "tests passing"
 git push
+git rm --cached .\test_wallet.py
+git commit -m "removed test file"
+git push
+
+# Adding .yml and fixing structure
+
+git add .\github\workflows\test.yml
+git commit -m "added test.yml"
+git push
+
+mv github .github
+git add .\.github\
+git add github/workflows/test.yml
+
+# Changes to be committed:
+#  (use "git restore --staged <file>..." to unstage)
+#        renamed:    github/workflows/test.yml -> .github/workflows/test.yml
+
+git commit -m "moved github to .github"
+git push
+
+# Re-added tests
+
+git add .\test_wallet.py
+git commit -m "added tests"
+git push
 ```
 3. Run the tests inside the container by going to `/root/shared` and running the
    command `py.test`. The tests should fail.
