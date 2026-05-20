@@ -78,7 +78,9 @@ CMD ["/bin/bash", "-l"]
 2. `git add` and `git push` the file `Dockerfile` to the repository.
 
 ```
-# Add your commands here
+git add .
+git commit -m "added Dockerfile"
+git push
 ```
 
 ## Build and push Docker image
@@ -88,7 +90,9 @@ CMD ["/bin/bash", "-l"]
    `<yourdockerhubusername>/sss`.
 
 ```
-# Add your commands here
+docker build -t docker.io/shloang/sss .
+docker login
+docker push shloang/sss
 ```
 
 ## Run a container, and share in files from the host.
@@ -98,7 +102,7 @@ CMD ["/bin/bash", "-l"]
    an interactive prompt inside the running container.
 
 ```
-# Add your commands here
+docker run -ti -v ${PWD}:/shared docker.io/shloang/sss
 ```
 
 ## Setup a simple Python test suite
@@ -109,14 +113,31 @@ CMD ["/bin/bash", "-l"]
    repository.  ``git add``, ``git commit`` and ``git push`` them.
 
 ```
-# Add your commands here
+git clone https://github.com/jhale/sustainable-scientific-software.git
+
+cp .\sustainable-scientific-software\courseworks\coursework2\test_wallet.py .\sustainable-scientific-software-homework\test_wallet.py
+
+cp .\sustainable-scientific-software\courseworks\coursework2\wallet.py .\sustainable-scientific-software-homework\wallet.py
+
+cd .\sustainable-scientific-software-homework\
+
+git add .
+
+git commit -m "added .py files"
+
+git push
 ```
 
 2. Start a Docker container using your image and share your repository into a
    directory `/root/shared` into the container.
 
 ```
-# Add your commands here
+docker run -ti -v ${PWD}:/shared docker.io/shloang/sss
+cd shared/
+py.test
+git add .
+git commit -m "tests passing"
+git push
 ```
 3. Run the tests inside the container by going to `/root/shared` and running the
    command `py.test`. The tests should fail.
